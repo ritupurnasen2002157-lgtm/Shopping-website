@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Fashion in Trend - Shop Latest Trends</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo" id="logoHomeBtn">
+                <h1><i class="fas fa-crown"></i> Fashion in Trend</h1>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search for clothes, shoes, beauty, watches... and more">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="header-actions">
+                <a href="#" id="loginBtn"><i class="fas fa-user"></i> Login</a>
+                <div class="user-dropdown" id="userDropdown" style="display: none;">
+                    <a href="#" id="userMenuBtn">
+                        <i class="fas fa-user-circle"></i> 
+                        <span id="userNameDisplay">Profile</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="user-dropdown-content">
+                        <a href="#" id="myAccountBtn"><i class="fas fa-user"></i> My Account</a>
+                        <a href="#" id="myOrdersBtn"><i class="fas fa-box"></i> My Orders</a>
+                        <a href="#" id="myAddressesBtn"><i class="fas fa-map-marker-alt"></i> Addresses</a>
+                        <a href="#" id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+                <a href="#" id="wishlistBtn"><i class="fas fa-heart"></i> Wishlist (<span id="wishlistCount">0</span>)</a>
+                <a href="#" id="cartBtn"><i class="fas fa-shopping-cart"></i> Cart (<span id="cartCount">0</span>)</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Offer Banner -->
+    <div class="offer-banner">
+        <div class="container">
+            <p><i class="fas fa-gift"></i> Upto 70% OFF | Bank Offers | Free Delivery on Orders Above ₹499 <span class="close-banner">×</span></p>
+        </div>
+    </div>
+
+    <!-- Hero Advertisement -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="slide active">
+                <img src="https://i.pinimg.com/1200x/96/95/29/969529e5d52000d9248490d0071b254e.jpg" alt="Summer Sale">
+                <div class="hero-content">
+                    <h2>Summer Collection Sale!</h2>
+                    <p>Upto 60% Off on Top Brands</p>
+                    <button class="cta-btn">Shop Now</button>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://i.pinimg.com/control1/1200x/15/4f/a5/154fa541587cdab59bbe15a3184b7372.jpg" alt="New Arrivals">
+                <div class="hero-content">
+                    <h2>New Arrivals</h2>
+                    <p>Latest Fashion Trends</p>
+                    <button class="cta-btn">Explore</button>
+                </div>
+            </div>
+        </div>
+        <div class="hero-nav">
+            <i class="fas fa-chevron-left prev"></i>
+            <i class="fas fa-chevron-right next"></i>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="container">
+            <h2>Shop by Category</h2>
+            <div class="category-grid" id="categoryGrid"></div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products">
+        <div class="container">
+            <h2>Featured Products <span id="productCount">(50)</span></h2>
+            <div class="product-grid" id="productGrid"></div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="register">Sign Up</button>
+            </div>
+            
+            <div id="loginFormContainer" class="auth-form active">
+                <form id="loginForm">
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="loginEmail" placeholder="Email address" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                        <i class="fas fa-eye-slash toggle-password" data-target="loginPassword"></i>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe"> Remember me
+                        </label>
+                        <a href="#" id="forgotPasswordLink" class="forgot-link">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="auth-btn">Login</button>
+                </form>
+                <div class="social-login">
+                    <p>Or continue with</p>
+                    <div class="social-icons">
+                        <button class="social-btn google" id="googleLoginBtn">
+                            <i class="fab fa-google"></i> Google
+                        </button>
+                        <button class="social-btn facebook" id="facebookLoginBtn">
+                            <i class="fab fa-facebook-f"></i> Facebook
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="registerFormContainer" class="auth-form">
+                <form id="registerForm">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="regFullName" placeholder="Full name" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="regEmail" placeholder="Email address" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="regPhone" placeholder="Phone number (optional)">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="regPassword" placeholder="Password" required>
+                        <i class="fas fa-eye-slash toggle-password" data-target="regPassword"></i>
+                    </div>
+                    <div class="password-strength" id="passwordStrength">
+                        <div class="strength-bar"></div>
+                        <span class="strength-text"></span>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="regConfirmPassword" placeholder="Confirm password" required>
+                    </div>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="termsCheckbox" required> I agree to the Terms & Conditions
+                    </label>
+                    <button type="submit" class="auth-btn">Create Account</button>
+                </form>
+            </div>
+            
+            <div id="forgotPasswordContainer" class="auth-form">
+                <a href="#" id="backToLoginBtn" class="back-to-login">← Back to Login</a>
+                <h2 style="margin-top: 1rem;">Reset Password</h2>
+                <form id="forgotPasswordForm">
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="resetEmail" placeholder="Enter your email" required>
+                    </div>
+                    <button type="submit" class="auth-btn">Send Reset Link</button>
+                </form>
+            </div>
+            
+            <div id="authMessage" class="auth-message"></div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content large">
+            <span class="close">×</span>
+            <h2>Shopping Cart</h2>
+            <div id="cartItems">
+                <p>Your cart is empty</p>
+            </div>
+            <div class="cart-breakdown">
+                <div>Subtotal: ₹<span id="cartSubtotal">0</span></div>
+                <div>Discount (10%): -₹<span id="cartDiscount">0</span></div>
+                <div>Tax (18%): +₹<span id="cartTax">0</span></div>
+                <div>Shipping: ₹<span id="cartShipping">50</span></div>
+                <hr>
+                <div class="cart-total">
+                    <strong>Total: ₹<span id="cartTotal">0</span></strong>
+                </div>
+            </div>
+            <button class="cta-btn" id="checkoutBtn">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Product Details Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content large">
+            <span class="close">×</span>
+            <h2 id="productTitle">Product Details</h2>
+            <div id="productDetails">
+                <img id="productDetailImg" src="" alt="">
+                <div id="productDetailInfo">
+                    <p id="productDetailCategory"></p>
+                    <p class="product-price-large" id="productDetailPrice"></p>
+                    <div id="productDetailSize">
+                        <p>Available sizes: S, M, L, XL</p>
+                        <select id="sizeSelect" class="size-select">
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                        </select>
+                    </div>
+                    <div id="productDetailFootwearSize" style="display: none;">
+                        <p>Available sizes: UK 5, UK 6, UK 7, UK 8, UK 9, UK 10</p>
+                        <select id="footwearSizeSelect" class="size-select">
+                            <option value="UK 5">UK 5</option>
+                            <option value="UK 6">UK 6</option>
+                            <option value="UK 7">UK 7</option>
+                            <option value="UK 8">UK 8</option>
+                            <option value="UK 9">UK 9</option>
+                            <option value="UK 10">UK 10</option>
+                        </select>
+                    </div>
+                    <button class="cta-btn" id="addToCartDetail">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div id="wishlistModal" class="modal">
+        <div class="modal-content large">
+            <span class="close">×</span>
+            <h2>Wishlist</h2>
+            <div id="wishlistItems">
+                <p>Your wishlist is empty</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Account Page Container -->
+    <div id="accountPageContainer"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Fashion in Trend. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
